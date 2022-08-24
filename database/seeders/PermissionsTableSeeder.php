@@ -76,14 +76,10 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 17,
-                'title' => 'movie_create',
-            ],
-            [
-                'id'    => 18,
                 'title' => 'setting_access',
             ],
             [
-                'id'    => 19,
+                'id'    => 18,
                 'title' => 'profile_password_edit',
             ],
         ];

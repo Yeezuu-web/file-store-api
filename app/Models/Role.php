@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use \DateTimeInterface;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Permission;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Role extends Model
 {
@@ -27,7 +29,7 @@ class Role extends Model
         'deleted_at',
     ];
 
-    public function permissions()
+    public function permissions(): BelongsToMany
     {
         return $this->belongsToMany(Permission::class);
     }

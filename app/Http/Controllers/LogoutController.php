@@ -11,7 +11,7 @@ class LogoutController extends Controller
 {
     public function __invoke()
     {
-        if (EnsureFrontendRequestsAreState::formFrontend(request())) {
+        if (EnsureFrontendRequestsAreStateful::fromFrontend(request())) {
             Auth::guard('web')->logout();
 
             request()->session()->invalidate();
