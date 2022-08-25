@@ -14,8 +14,10 @@ class UserApiController extends Controller
 {
     public function __invoke()
     {
+        $user = auth()->user()->with(['roles'])->first();
+
         return UserResource::make(
-            auth()->user()
+            $user
         );
     }
 
