@@ -14,11 +14,9 @@ class UserApiController extends Controller
 {
     public function __invoke()
     {
-        $user = auth()->user()->with(['roles'])->first();
+        $user = auth()->user();
 
-        return UserResource::make(
-            $user
-        );
+        return new UserResource($user->load(['roles']));
     }
 
     /**
@@ -30,7 +28,7 @@ class UserApiController extends Controller
     {
         abort_if(Gate::denies('user_access'), HttpFoundationResponse::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new UserResource(User::with(['roles'])->get());
+        return UserResource::collection(User::with(['roles'])->get());
     }
 
     /**

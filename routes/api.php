@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\Api\RoleApiController;
 use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
-use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 // Auth ...
@@ -20,4 +20,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     // Users
     Route::resource('/users', UserApiController::class);
+
+    // Roles
+    Route::resource(
+        '/roles',
+        RoleApiController::class
+    );
 });
